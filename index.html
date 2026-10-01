@@ -9,7 +9,6 @@
         :root {
             --primary: #0f172a;
             --accent: #0ea5e9;
-            --pink-accent: #ec4899;
             --light-bg: #f8fafc;
             --white: #ffffff;
             --text-gray: #64748b;
@@ -33,25 +32,46 @@
 
         .contact-info-header { font-size: 14px; font-weight: 600; color: var(--accent); }
 
-        /* Hero Section */
-        .hero { padding: 90px 8%; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
-        .hero-content h1 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 20px; color: var(--primary); }
+        /* Full Screen Hero Section */
+        .hero { 
+            position: relative; 
+            min-height: calc(100vh - 85px); 
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('bg.jpg') no-repeat center center/cover; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            padding: 40px 8%; 
+            color: var(--white); 
+        }
+        .hero-content { max-width: 800px; }
+        .hero-content h1 { font-size: 44px; font-weight: 700; line-height: 1.2; margin-bottom: 20px; color: var(--white); }
         .hero-content h1 span { color: var(--accent); }
-        .hero-content p { font-size: 16px; color: var(--text-gray); margin-bottom: 30px; }
+        .hero-content p { font-size: 18px; color: #cbd5e1; margin-bottom: 35px; line-height: 1.6; }
         
-        .hero-image-box { background: var(--white); padding: 15px; border-radius: 16px; box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15); text-align: center; }
-        .hero-image-box img { width: 100%; border-radius: 10px; object-fit: cover; max-height: 350px; }
+        .hero-btn { 
+            background: var(--accent); 
+            color: var(--white); 
+            padding: 14px 32px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            display: inline-block; 
+            transition: background 0.3s, transform 0.3s; 
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); 
+        }
+        .hero-btn:hover { background: #0284c7; transform: translateY(-2px); }
 
         /* Services & Doctors Section */
         section { padding: 90px 8%; text-align: center; }
-        .section-title { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
+        .section-title { font-size: 32px; font-weight: 700; margin-bottom: 10px; color: var(--primary); }
         .section-subtitle { color: var(--text-gray); max-width: 600px; margin: 0 auto 50px auto; font-size: 15px; }
         
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; text-align: left; }
         
         .service-card { background: var(--white); padding: 35px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-top: 4px solid var(--accent); transition: transform 0.3s; }
         .service-card:hover { transform: translateY(-5px); }
-        .service-card h3 { font-size: 18px; margin-bottom: 12px; }
+        .service-card h3 { font-size: 18px; margin-bottom: 12px; color: var(--primary); }
         .service-card p { font-size: 14px; color: var(--text-gray); }
 
         /* Professionalism / Doctors Section Layout */
@@ -73,8 +93,9 @@
         body.lang-en span[data-lang="en"] { display: inline; }
 
         @media (max-width: 768px) {
-            .hero, .prof-container { grid-template-columns: 1fr; text-align: center; }
-            .hero-content h1 { font-size: 28px; }
+            .hero-content h1 { font-size: 30px; }
+            .hero-content p { font-size: 15px; }
+            .prof-container { grid-template-columns: 1fr; text-align: center; }
             .nav-links { display: none; }
             .prof-container { text-align: left; }
         }
@@ -84,14 +105,19 @@
 
     <header>
         <div class="logo-container">
-            <!-- ლოგო: logo.png -->
-            <img src="logo.png" alt="MQ Dental Logo">
+            <img src="logo.png" alt="MQ Dental Logo">[cite: 8]
         </div>
         <ul class="nav-links">
             <li>
                 <a href="#services">
                     <span data-lang="ka">სერვისები</span>
                     <span data-lang="en">Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="#professionalism">
+                    <span data-lang="ka">პროფესიონალიზმი</span>
+                    <span data-lang="en">Professionalism</span>
                 </a>
             </li>
             <li>
@@ -106,6 +132,7 @@
         </div>
     </header>
 
+    <!-- მთავარი სექცია სრული ეკრანის ფონით -->
     <section class="hero">
         <div class="hero-content">
             <h1>
@@ -116,18 +143,14 @@
                 <span data-lang="ka">MQ Dental — თქვენი ჯანმრთელი და სრულყოფილი ღიმილისთვის. თანამედროვე ტექნოლოგიები, მაღალი პროფესიონალიზმი და მზრუნველი გარემო.</span>
                 <span data-lang="en">MQ Dental — for your healthy and perfect smile. Modern technologies, high professionalism, and a caring environment.</span>
             </p>
-            <a href="#professionalism" style="background: var(--accent); color: var(--white); padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; display: inline-block;">
+            <a href="#services" class="hero-btn">
                 <span data-lang="ka">გაიგეთ მეტი</span>
                 <span data-lang="en">Learn More</span>
             </a>
         </div>
-        <div class="hero-image-box">
-            <!-- ფონის სურათი (კოლაჟი): bg.jpg -->
-            <img src="bg.jpg" alt="MQ Dental Background">
-            <p style="margin-top: 15px; font-weight: 600; font-size: 14px; color: var(--accent);">MQ DENTAL CLINIC</p>
-        </div>
     </section>
 
+    <!-- სერვისები იწყება ქვემოდან -->
     <section id="services">
         <h2 class="section-title">
             <span data-lang="ka">ჩვენი სერვისები</span>
@@ -184,8 +207,7 @@
 
         <div class="prof-container">
             <div class="prof-image">
-                <!-- პროფესიონალიზმი / ექიმების სურათი: doctors.jpg -->
-                <img src="doctors.jpg" alt="MQ Dental Team">
+                <img src="doctors.jpg" alt="MQ Dental Team">[cite: 9]
             </div>
             <div class="prof-content">
                 <h3>
